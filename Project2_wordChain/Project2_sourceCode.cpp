@@ -13,7 +13,7 @@ Project 2 : 타임어택 끝말잇기(concentration) 게임
 
 using namespace std;
 
-int main() 
+int main()
 {
     vector<string> words; // 입력된 단어 저장
     string prevWord, currWord; // 이전 단어, 현재 단어
@@ -24,17 +24,17 @@ int main()
     cout << "제한 시간: " << remainingTime << "초" << endl;
     cout << "시작 단어를 입력하세요: ";
     cin >> prevWord;
-    words.push_back(prevWord); 
+    words.push_back(prevWord);
 
-    startTime = time(NULL); 
+    startTime = time(NULL);
 
-    while (true) 
+    while (true)
     {
         currentTime = time(NULL);
         remainingTime = 30 - (currentTime - startTime);
 
-        //시간 초과
-        if (remainingTime <= 0) 
+        // 시간 초과
+        if (remainingTime <= 0)
         {
             cout << "\n시간 초과!" << endl;
             break;
@@ -45,30 +45,33 @@ int main()
         cin >> currWord;
 
         // 이미 입력된 단어 확인
-        // True False로 구분. ㅁ
         bool isDuplicate = false;
-        for (string word : words) {
-            if (word == currWord) {
+        for (const string& word : words)
+        {
+            if (word == currWord)
+            {
                 isDuplicate = true;
                 break;
             }
         }
 
-        //이미 입력이 되어있을 경우 에러
-        if (isDuplicate) {
+        // 이미 입력된 단어일 경우 에러
+        if (isDuplicate)
+        {
             cout << "이미 입력된 단어입니다. 다시 입력하세요." << endl;
-            continue; 
+            continue;
         }
 
         // 끝말잇기 규칙 확인
-        if (prevWord[prevWord.length() - 1] != currWord[0]) {
+        if (prevWord[prevWord.length() - 1] != currWord[0])
+        {
             cout << "끝말잇기 규칙에 맞지 않습니다. 다시 입력하세요." << endl;
-            continue; 
+            continue;
         }
 
         // 유효한 단어 입력 시
         words.push_back(currWord);
-        prevWord = currWord; 
+        prevWord = currWord;
     }
 
     cout << "게임 종료! 입력한 단어 개수: " << words.size() << endl;
