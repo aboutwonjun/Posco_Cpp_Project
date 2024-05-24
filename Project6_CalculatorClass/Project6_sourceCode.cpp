@@ -145,5 +145,18 @@ int main()
 		{
 			continue;
 		}
-		else if (userChoice == ㅛ}
+		else if (userChoice == "AC")
+		{
+			Calculator::result = 0;
+			cout << "연산이 초기화 되었습니다. " << endl;
+		}
+		else if (userChoice == "EXIT")
+		{
+			cout << "계산을 종료합니다. " << endl;
+			break;
+		}
+
+		return 0;
+	}
+}
 
